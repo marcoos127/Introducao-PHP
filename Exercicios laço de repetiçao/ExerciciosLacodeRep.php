@@ -50,7 +50,7 @@
 	$p = 5;
 	while ($p >= 1) { 
 		$venda+=26;
-		echo "<br>Os ingresso vendidos a $p Reais, venderam-se $venda ingressos gerando renda de: " . $venda * $p . " Reais";
+		echo "<br>Os ingressos vendidos a $p Reais, venderam-se $venda ingressos gerando renda de: " . $venda * $p . " Reais";
 		$p -= 0.50;
 	}
 	//Exercicio 7
@@ -112,15 +112,39 @@
 	echo "<br><b>EXERCICIO 11</b><br>";
 	
 
+$tra = array(1000, 1200, 1300, 1500, 500, 600, 700, 890, 800, 450, 1600, 1700, 1800, 1900, 1100);
+
+$pv = array("p","v","p","v","v","p","v","v","p","p","v","p","v","p","v",); 
+
+for ($y=0; $y < 10 ; $y++) { 
+	if ($pv[$y] == "v") {
+		echo "<br>O valor da compra a vista é: " .$tra[$y];
+	}else if ($pv[$y] == "p"){
+	$jsj = ($tra[$y] / 3);
+		
+		echo "<br>O valor da primeira prestação será: " . $jsj;
+		
+		echo "<br>O valor da compra a prazo é: " .$tra[$y];
+	}
+
+		echo "<br>O valor total das comprs é: ".array_sum($tra);
+}
 	//Exercicio 12
-	/*echo "<br><b>EXERCICIO 12</b><br>";
+	echo "<br><b>EXERCICIO 12</b><br>";
 
 	$idPessoa = array(15,26,30,40,50,60,80,19,10,21,32,43,54,65,46,17,28,25,20,35,22,53,24,25,35);
 	$altPessoa = array(1.70,1.80,2,1.30,1.40);
-	$pesoPessoa = array(60,50,40,70,80,95,70,55,67,60,50,40,70,80,95,70,55,67,60,50,40,70,80,95,70);
+	$pesoPessoa = array(30,50,30,70,80,95,70,55,67,60,50,30,70,80,95,70,55,67,60,50,40,70,30,95,30);
 	$id50 = 0;
 	$id1020 = 0;
-	for ($k=0; $k < 25; $k++) { 
+	$somaAI = 0;
+	$pesoMenor = 0;
+	for ($k=0; $k < 25; $k++) {
+
+		if ($pesoPessoa[$k] < 40) {
+			$pesoMenor++;
+		}
+
 		if ($idPessoa[$k] > 50) {
 			$id50++;
 		}
@@ -129,12 +153,159 @@
 		}
 	}
 	for ($md=0; $md < 5; $md++) {
-			$altPessoa[$md] += $altPessoa[$md]; 
+			$somaAI += $altPessoa[$md]; 
 			if ($md = 4) {
-				echo "<br>" . $id1020 / $altPessoa[$md];
+				echo "<br>Média das alturas das pessoas com idades entre 10 e 20 anos: " . $id1020 / $somaAI;
 			}
 	}
-*/
+	echo "<br>Pessoas com a idade maior que 50: " . $id50;
+	echo "<br>Porcentagem de pessoas com peso inferior a 40 quilos entre todas as pessoas analisadas " . ($pesoMenor * 100) / 25 . "%";
 
-	
+	//Exercicio 13
+	echo "<br><b>EXERCICIO 13</b><br>";
+
+	$idade13 = array(14,20,30,24,15,16,27);
+	$peso13 = array(91,96,80,55,75,63,58);
+	$somaid = 0;
+	$somaps = 0;
+
+	for ($q=0; $q < 7 ; $q++) { 
+			$somaid += $idade13[$q];
+
+		if ($peso13[$q] > 90) {
+			$somaps++;
+		}
+	}
+
+	echo "<br>Quantidade de pessoas com mais de 90 kilos: " . $somaps;
+	echo "<br>Média da idade das sete pessoas: " . $somaid / 7;
+
+	//Exercicio 14
+	echo "<br><b>EXERCICIO 14</b><br>";
+
+	$id14 = array(15,26,30,40,50,60,80,19,10,21,32,43,54,65,46,17,28,25,20,35,22,53,24,25,35);
+	$ps14 = array(30,50,30,70,80,55,70,55,67,60,50,30,70,80,95,70,55,67,60,50,40,70,30,95,30);
+	$al14 = array(1.70,1.80,2,1.30,1.40,1.70,1.80,2,1.30,1.40,1.70,1.80,2,1.30,1.40,1.70,1.80,2,1.30,1.40,1.70,1.80,2,1.30,1.40);
+	$corolho = array("A","P","V","C","C","A","P","V","C","C","A","P","V","C","C","A","P","V","C","C","A","P","V","C","C");
+	$corcab = array("P","C","L","R","P","P","C","L","R","P","P","C","L","R","P","P","C","L","R","P","P","C","L","R","P");
+	$p50i60 = 0;
+	$p2=0;
+	$pazul=0;
+	$rsema=0;
+	$idd14=0;
+	for ($ex=0; $ex < 25; $ex++) { 
+		if ($id14[$ex] > 50 && $ps14[$ex] < 60) {
+			$p50i60++;
+		}
+		elseif ($al14[$ex] < 1.50) {
+			$p2++;
+			$idd14 += $id14[$ex];
+		}
+		elseif ($corolho[$ex] == "A") {
+			$pazul++;
+		}
+		if ($corcab[$ex] == "R" && $corolho[$ex] != "A") {
+			$rsema++;
+		}
+	}
+
+	echo "<br>Pessoas com a idade superior a 50 anos e peso inferior a 60 kilos: " . $p50i60;
+
+	echo "<br>Média da idade das pessoas com altura inferior a 1,50: " . $idd14 / $p2;
+	echo "<br>Porcentagem de pessoas com olhos azuis entre todas as pessoas analisadas: " . ($pazul * 100) / 25 . "%";
+	echo "<br>Pessoas ruivas que nao possuem olhos azuis: " . $rsema;
+
+
+	//Exercicio 15
+	echo "<br><b>EXERCICIO 15</b><br>";
+
+	$numalt = array(10,20,30,40,50,60,70,80,90,100);
+	$num30 = 0;
+	for ($ale=0; $ale < 10; $ale++) { 
+		if ($numalt[$ale] >= 30 && $numalt[$ale] <= 90) {
+			$num30++;
+		}
+	}
+	echo "<br>Quantidade de numeros entre 30 e 90: " . $num30;
+
+	//Exercicio 16
+	echo "<br><b>EXERCICIO 16</b><br>";
+
+$iiuyy = array(18,15,16,59,20,76,80,82,18,93);
+
+$hhg = array(1.60,1.70,1.99,1.45,1.79,1.80,1.99,1.44,1.30,1.20);
+
+$pooo = array(66,50,80,30,20,77,55,88,100,120);
+
+
+
+
+for ($dj=0; $dj < 10 ; $dj++) { 
+			
+				
+			if ($iiuyy[$dj] > 90 && $hhg[$dj] < 1.50) {
+				echo "<br>A posição das pessoas cuja o peso é maior que 90 e a altura é menor que 1.50 são: ".$dj;
+			} 
+
+		else if ($iiuyy[$dj] >= 10 && $iiuyy[$dj] <= 30 ) {
+					echo "<br>A posição das pessoas cuja a idade está entre 10 e 30 são: ".$dj;
+		}
+
+				else if ($hhg[$dj] > 1.90 ) {
+					echo "<br>A posição das pessoas cuja a altura é maior que 1.50 são:" .$dj;
+				}
+				
+}
+echo "<br>A média das idades é:". (array_sum($iiuyy) / 10);
+
+
+	//Exercicio 17
+echo "<br> <b> EXERCÍCIO 17 </b> ";
+
+
+
+$sd = array(18,25,16,59,15,66,80);
+$sex = array("M","F","M","F","F","M","F");
+
+for ($rf=0; $rf < 7 ; $rf++) { 
+			
+				
+			if ($sex[$rf] == "F") {
+				echo "<br>As idades femininas são: " .$sd[$rf];
+
+			} 
+
+		else if ($sex[$rf] == "M" ) {
+				echo "<br>As idades masculinas são:" .$sd[$rf]; 
+		}
+				
+}
+
+echo "<br>A média das idades é:". (array_sum($sd) / 7);
+
+//Exercicio 18
+echo "<br> <b> EXERCÍCIO 18 </b> ";
+
+$carro = 6000;
+$parcelas = 12;
+
+echo "<br>Carro: ". $carro . "Parcelas: " . $parcelas;
+echo "<br>Comprado a vista: ". ($carro * 20 / 100);
+
+echo "<br>Preço final: " .($carro * 6 * $parcelas / 100) ;
+
+//Exercicio 19
+echo "<br> <b> EXERCÍCIO 19 </b> ";
+
+$mdi = array(12,82,2,82,78,72,67,82,42);
+
+echo "<br>O valor da média das idades é: " . (array_sum($mdi) / 9);
+
+//Exercicio 20
+echo "<br> <b> EXERCÍCIO 20 </b> ";
+
+$idade20 = array(18,15,16,19,20,26,40,12,18,23);
+		echo "<br>O menor valor é :" .min($idade20);
+		echo "<br>O maior valor é :" .max($idade20);	
+
 ?>
